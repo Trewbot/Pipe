@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>{Title}</title>
+	<link rel="shortcut icon" href="{Favicon}">
+	<link rel="alternate" type="application/rss+xml" href="{RSS}">
+	{block:Description}
+		<meta name="description" content="{MetaDescription}" />
+	{/block:Description}
+
+	<meta name="select:Alignment" content="justify" title="Justified"/>
+	<meta name="select:Alignment" content="center" title="Centered"/>
+	<meta name="select:Alignment" content="left" title="Left"/>
+	<meta name="select:Avatar Style" content="0" title="Square"/>
+	<meta name="select:Avatar Style" content="50%" title="Circle"/>
+	<meta name="Background" content="#fff"/>
+	<meta name="font:Font" content="Baskerville"/>
+	<meta name="text:Home" content="about"/>
+	<meta name="color:Link" content="#555"/>
+	<meta name="color:LinkHover" content="#555"/>
+	<meta name="select:Size" content="10pt" title="Small"/>
+	<meta name="select:Size" content="12pt" title="Medium"/>
+	<meta name="select:Size" content="14pt" title="Large"/>
+	<meta name="color:Text" content="#555"/>
+	<meta name="color:Light Text" content="#aaa"/>
+	<meta name="if:Underline Links" content="1"/>
+	<meta name="text:Google Analytics ID" content=""/>
+
+	<style>
+
+        *						{margin:0px;zoom:1;font-size:{select:Size};font-family:{font:Font};border:0;}
+        html					{color:{color:Text};background:{BackgroundColor};overflow-y:scroll;}
+        small					{font-size:8pt;}
+        sup, sub				{font-size:5pt;}
+        code					{font-family:monospace;}
+        pre						{overflow:visible !important;width:478px;border:1px solid {color:Text};padding:10px !important;margin-left:-100px;background:#fff;}
+        body					{padding:0;}
+        a						{text-decoration:none;cursor:pointer;color:{color:Text};}
+        a:hover					{text-decoration:underline;color:{color:Text};}
+        table					{margin-bottom:10px;border-spacing:0;border:{color:Text} 1px solid;border-collapse:collapse;background:white; width:500px;margin-left:-100px;}
+        thead					{font-weight:bold;}
+        td						{padding:3px;border:{color:Text} 1px solid;}
+        img						{-webkit-transform:translateZ(0);-webkit-transform: rotate(0);}
+        hr						{border:0;height:1px;background:{color:Text};margin-top:10px;margin-bottom:10px;}
+        p, pre					{margin-bottom:10px;}
+        p:last-child			{margin:0;}
+		blockquote				{margin-bottom:10px;padding-left:9px;border-left:1px solid {color:Text};}
+        :target					{margin-left:-10px;padding-left:9px;border-left:1px solid {color:Text};}
+        
+        .content				{width:300px;text-align:justify;margin-left:auto;margin-right:auto;margin-top:calc(50vh - 100px);margin-bottom:40px;}
+
+		#avatar					{margin-left:auto;margin-right:auto;margin-bottom:10px;width:128px;position:relative;}
+		#avatar img				{border-radius:{select:Avatar Style}}
+		.post					{margin-bottom:100px;}
+		.post-elem,
+		.post-img				{position:relative;margin-bottom:10px;margin-left:-100px;}
+		.info					{margin-top:10px;}
+		.info,
+		.info a,
+		.info a:hover			{color:{color:Light Text} !important;}
+		.space					{margin-bottom:10px;}
+		.html_photoset			{margin-bottom:10px;}
+		.attribution			{text-align:right;right:10px;bottom:10px;position:fixed;font-size:8pt;z-index:3;}
+		.attribution a			{font-size:8pt;}
+		
+		{CustomCSS}
+	</style>
+	
+</head>
+<body>
+	<div class="content{block:PostNotes}with-notes{/block:PostNotes}">
+	{block:IndexPage}
+		<div class="post">
+			{block:ShowAvatar}<div id="avatar"><a href="{BlogURL}"><img src="{PortraitURL-128}"/></a></div>{/block:ShowAvatar} 
+			{Description}
+		</div>
+	{/block:IndexPage}
+	{block:Posts inlineMediaWidth="500" inlineNestedMediaWidth="250"}
+		<div class="post">
+			{block:Text}
+				{block:Title}<a href="{Permalink}"><b>{Title}</b></a><hr>{/block:Title}
+				{Body}
+			{/block:Text}
+			
+			{block:Photo}
+				{LinkOpenTag}<img class="post-img" src="{PhotoURL-500}"/>{LinkCloseTag}
+				<!-- {PhotoAlt} -->
+				{block:Caption}{Caption}{/block:Caption}
+			{/block:Photo}
+			
+			{block:Panorama}
+				{LinkOpenTag}<img class="post-img" src="{PhotoURL-500}"/>{LinkCloseTag}
+				<!-- {PhotoAlt} -->
+				{block:Caption}{Caption}<br>{/block:Caption}
+			{/block:Panorama}
+			
+			{block:Photoset}
+				{Photoset-250}
+				{block:Caption}{Caption}{/block:Caption}
+			{/block:Photoset}
+			
+			{block:Quote}
+				<b>"{Quote}"</b><br><br>
+				{block:Source}&mdash;{Source}{/block:Source}
+			{/block:Quote}
+			
+			{block:Link}
+				<a href="{URL}" {Target}>{Name}</a>
+				{block:Description}{Description}{/block:Description}
+			{/block:Link}
+			
+			{block:Chat}
+				{block:Title}<b>{Title}</b><hr>{/block:Title}
+				{block:Lines}
+					<p>{block:Label}<b>{Label}</b>&nbsp;{/block:Label}{Line}</p>
+				{/block:Lines}
+			{/block:Chat}
+			
+			{block:Audio}
+				{block:AudioEmbed}{AudioEmbed-500}{/block:AudioEmbed}
+				{block:AudioPlayer}{AudioPlayer}{/block:AudioPlayer}
+				{block:Caption}<div class="space"></div>{Caption}{/block:Caption}
+			{/block:Audio}
+			
+			{block:Video}
+				{Video-500}
+				{block:Caption}<div class="space"></div>{Caption}{/block:Caption}
+			{/block:Video}
+			
+			{block:Answer}
+				{Asker}:&nbsp;<b>"{Quote}"</b><br><br>
+				{Replies}
+			{/block:Answer}
+			
+			{block:More}<p><a href="{Permalink}">{lang:Read more}...</a></p>{/block:More}
+			
+			<div class="info">
+		    	<a href="{Permalink}">{lang:Permalink}</a>{block:NoteCount} &bull; {NoteCountWithLabel}{/block:NoteCount}
+			</div>
+		</div>
+		{block:PostNotes}
+				{PostNotes}
+		{/block:PostNotes}
+	{/block:Posts}
+	</div>
+	
+
+	<div class="attribution">"pipe" by <a href="http://themes.phene.co">trewbot</a> &copy; 2015</div>
+	
+	{block:IfGoogleAnalyticsID}
+	<script>
+		var _gaq=[['_setAccount','{text:Google Analytics ID}'],['_trackPageview']];
+		(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+		g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+		s.parentNode.insertBefore(g,s)}(document,'script'));
+	</script>
+	{/block:IfGoogleAnalyticsID}
+</body>
+</html>
