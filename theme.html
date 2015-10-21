@@ -51,6 +51,7 @@
 
 		#avatar					{margin-left:auto;margin-right:auto;margin-bottom:10px;width:128px;position:relative;}
 		#avatar img				{border-radius:{select:Avatar Style}}
+		.avatar					{margin-right:10px;}
 		.post					{margin-bottom:100px;}
 		.post-elem,
 		.post-img				{position:relative;margin-bottom:10px;margin-left:-100px;}
@@ -58,6 +59,7 @@
 		.info,
 		.info a,
 		.info a:hover			{color:{color:Light Text} !important;}
+		.info hr				{background:{color:Light Text} !important;}
 		.space					{margin-bottom:10px;}
 		.html_photoset			{margin-bottom:10px;}
 		.attribution			{text-align:right;right:10px;bottom:10px;position:fixed;font-size:8pt;z-index:3;}
@@ -68,7 +70,7 @@
 	
 </head>
 <body>
-	<div class="content{block:PostNotes}with-notes{/block:PostNotes}">
+	<div class="content {block:PostNotes}with-notes{/block:PostNotes}">
 	{block:IndexPage}
 		<div class="post">
 			{block:ShowAvatar}<div id="avatar"><a href="{BlogURL}"><img src="{PortraitURL-128}"/></a></div>{/block:ShowAvatar} 
@@ -134,13 +136,16 @@
 			
 			{block:More}<p><a href="{Permalink}">{lang:Read more}...</a></p>{/block:More}
 			
-			<div class="info">
-		    	<a href="{Permalink}">{block:Date}<span class="timestamp" unix-time="{Timestamp}">{Timestamp}</span>{/block:Date}{block:NoteCount} &bull; {NoteCountWithLabel}{/block:NoteCount}</a>
+			<div class="info"><hr>
+		    	<a href="{Permalink}">
+					{block:Date}<span class="timestamp" unix-time="{Timestamp}">{Timestamp}</span>{/block:Date}
+					{block:NoteCount} &bull; {NoteCountWithLabel}{/block:NoteCount}
+				</a>
 			</div>
 		</div>
-		{block:PostNotes}
-				{PostNotes}
-		{/block:PostNotes}
+			{block:PostNotes}
+					{PostNotes}
+			{/block:PostNotes}
 	{/block:Posts}
 	</div>
 	
