@@ -135,7 +135,7 @@
 			{block:More}<p><a href="{Permalink}">{lang:Read more}...</a></p>{/block:More}
 			
 			<div class="info">
-		    	<a href="{Permalink}">{lang:Permalink}</a>{block:NoteCount} &bull; {NoteCountWithLabel}{/block:NoteCount}
+		    	<a href="{Permalink}">{block:Date}<span class="timestamp" unix-time="{Timestamp}">{Timestamp}</span>{/block:Date}{block:NoteCount} &bull; {NoteCountWithLabel}{/block:NoteCount}</a>
 			</div>
 		</div>
 		{block:PostNotes}
@@ -146,6 +146,27 @@
 	
 
 	<div class="attribution">"pipe" by <a href="http://themes.phene.co">trewbot</a> &copy; 2015</div>
+	
+	<script>
+		_g = {};
+		function _i(i){return document.getElementById(i);}
+		function _c(c){return document.getElementsByClassName(c);}
+		_g.time	= function(unix){
+			var ago = ~~(+new Date / 1e3) - (unix),
+				num = {1:'',60:' second',3600:' minute',86400:' hour',2678400:' day'},
+				k	= Object.keys(num),
+				s;
+			for(var i in num)
+				if(ago < +i) return ago > 0 ? (s = ~~(ago / k[k.indexOf(""+i)-1])) + num[i] + (s != 1 ? 's' : '') : 'Right Now!';
+			var stamp = new Date(+unix * 1e3);
+			return ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][stamp.getMonth()] + ' ' + stamp.getDate() + ', ' + stamp.getFullYear();
+		};
+		setInterval(function(){
+			var ts = _c('timestamp');
+			for(var i = 0; i < ts.length; i++)
+				if(!isNaN(parseInt(ts[i].getAttribute('unix-time')))) ts[i].innerHTML = _g.time(ts[i].getAttribute('unix-time'));
+		}, 1e3);
+	</script>
 	
 	{block:IfGoogleAnalyticsID}
 	<script>
