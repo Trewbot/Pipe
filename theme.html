@@ -53,6 +53,7 @@
 		#avatar img				{border-radius:{select:Avatar Style}}
 		.avatar					{margin-right:10px;}
 		.post					{margin-bottom:100px;}
+		.audio_player,
 		.post-elem,
 		.post-img				{position:relative;margin-bottom:10px;margin-left:-100px;}
 		.info					{margin-top:10px;}
@@ -110,7 +111,9 @@
 			{/block:Quote}
 			
 			{block:Link}
-				<a href="{URL}" {Target}>{Name}</a>
+				<p>
+					<b><a href="{URL}" {Target}>{Name}</a></b>
+				</p>
 				{block:Description}{Description}{/block:Description}
 			{/block:Link}
 			
@@ -122,7 +125,7 @@
 			{/block:Chat}
 			
 			{block:Audio}
-				{block:AudioEmbed}{AudioEmbed-500}{/block:AudioEmbed}
+				{block:AudioEmbed}<div class="post-elem">{AudioEmbed-500}</div>{/block:AudioEmbed}
 				{block:AudioPlayer}{AudioPlayer}{/block:AudioPlayer}
 				{block:Caption}<div class="space"></div>{Caption}{/block:Caption}
 			{/block:Audio}
@@ -141,13 +144,7 @@
 			
 			<div class="info"><hr>
 		    	<a href="{Permalink}">
-					{block:Date}<span class="timestamp" unix-time="{Timestamp}">{Timestamp}</span>{/block:Date}
-					{block:NoteCount} &bull; {NoteCountWithLabel}{/block:NoteCount}
-					{block:HasTags},
-						{block:Tags}
-							<a href="{TagURL}">#{Tag}</a>
-						{/block:Tags}
-					{/block:HasTags}
+					{block:Date}<span class="timestamp" unix-time="{Timestamp}">{Timestamp}</span>{/block:Date}{block:NoteCount}, {NoteCountWithLabel}{/block:NoteCount}{block:HasTags}{block:Tags}, <a href="{TagURL}">#{Tag}</a>{/block:Tags}{/block:HasTags}
 				</a>
 			</div>
 		</div>
