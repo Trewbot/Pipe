@@ -15,7 +15,6 @@
 	<meta name="select:Avatar Style" content="50%" title="Circle"/>
 	<meta name="Background" content="#fff"/>
 	<meta name="font:Font" content="Baskerville"/>
-	<meta name="text:Home" content="about"/>
 	<meta name="color:Link" content="#555"/>
 	<meta name="color:LinkHover" content="#555"/>
 	<meta name="select:Size" content="10pt" title="Small"/>
@@ -35,8 +34,8 @@
         code					{font-family:monospace;}
         pre						{overflow:visible !important;width:478px;border:1px solid {color:Text};padding:10px !important;margin-left:-100px;background:#fff;}
         body					{padding:0;}
-        a						{text-decoration:none;cursor:pointer;color:{color:Text};}
-        a:hover					{text-decoration:underline;color:{color:Text};}
+        a						{text-decoration:none;cursor:pointer;color:{color:Link};}
+        a:hover					{text-decoration:underline;color:{color:LinkHover};}
         table					{margin-bottom:10px;border-spacing:0;border:{color:Text} 1px solid;border-collapse:collapse;background:white; width:500px;margin-left:-100px;}
         thead					{font-weight:bold;}
         td						{padding:3px;border:{color:Text} 1px solid;}
@@ -152,12 +151,15 @@
 					{PostNotes}
 			{/block:PostNotes}
 	{/block:Posts}
+	
 	</div>
 	
 
 	<div class="attribution">"pipe" by <a href="http://themes.phene.co">trewbot</a> &copy; 2015</div>
 	
 	<script>
+		//	this automatically updates timestamps
+		//	it also makes localization difficult
 		_g = {};
 		function _i(i){return document.getElementById(i);}
 		function _c(c){return document.getElementsByClassName(c);}
