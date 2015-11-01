@@ -23,6 +23,7 @@
 	<meta name="color:Text" content="#555"/>
 	<meta name="color:Light Text" content="#aaa"/>
 	<meta name="if:Underline Links" content="1"/>
+	<meta name="text:Subtitle" content=""/>
 	<meta name="text:Google Analytics ID" content=""/>
 
 	<style>
@@ -75,8 +76,9 @@
 <body>
 	<div class="content {block:PostNotes}with-notes{/block:PostNotes}">
 	{block:IndexPage}
-		<div class="post">
+		<div class="post" style="text-transform:lowercase;">
 			{block:ShowAvatar}<div id="avatar"><a href="{BlogURL}"><img src="{PortraitURL-128}"/></a></div>{/block:ShowAvatar} 
+			<b><a href="{BlogURL}" id="home">{title}</a> {block:IfSubtitle}&mdash; {text:Subtitle}{/block:IfSubtitle}</b><hr>
 			{Description}
 		</div>
 	{/block:IndexPage}
@@ -152,7 +154,7 @@
 			{/block:PostNotes}
 	{/block:Posts}
 	{block:Pagination}
-		<a>{Title}</a>,
+		<a href="{BlogURL}>{Title}</a>,
 		{block:PreviousPage}<a href="{PreviousPage}" style="text-transform:lowercase;">{lang:Newer}</a>,{/block:PreviousPage}
 		{block:NextPage}<a href="{NextPage}" style="text-transform:lowercase;">{lang:Older}</a>{/block:NextPage}
 	{/block:Pagination}
