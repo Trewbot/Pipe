@@ -21,7 +21,7 @@
 	<meta name="select:Size" content="12pt" title="Medium"/>
 	<meta name="select:Size" content="14pt" title="Large"/>
 	<meta name="color:Text" content="#555"/>
-	<meta name="color:Light Text" content="#aaa"/>
+	<meta name="color:Light Text" content="#ccc"/>
 	<meta name="if:Underline Links" content="1"/>
 	<meta name="text:Subtitle" content=""/>
 	<meta name="text:Google Analytics ID" content=""/>
@@ -102,7 +102,7 @@
 			{/block:Panorama}
 			
 			{block:Photoset}
-				{Photoset-250}
+				<div class="post-elem">{Photoset-500}</div>
 				{block:Caption}{Caption}{/block:Caption}
 			{/block:Photoset}
 			
@@ -143,10 +143,8 @@
 			
 			{block:More}<p><a href="{Permalink}">{lang:Read more}...</a></p>{/block:More}
 			
-			<div class="info"><hr>
-		    	<a href="{Permalink}">
-					{block:Date}<span class="timestamp" unix-time="{Timestamp}">{Timestamp}</span>{/block:Date}{block:NoteCount}, {NoteCountWithLabel}{/block:NoteCount}{block:HasTags}{block:Tags}, <a href="{TagURL}">#{Tag}</a>{/block:Tags}{/block:HasTags}
-				</a>
+			<div class="info">
+		    	<a href="{Permalink}">{block:Date}<span class="timestamp" unix-time="{Timestamp}">{Timestamp}</span>{/block:Date}{block:NoteCount}, {NoteCountWithLabel}{/block:NoteCount}</a>{block:HasTags}, tags:{block:Tags} <a href="{TagURL}">{Tag}</a>{/block:Tags}{/block:HasTags}
 			</div>
 		</div>
 			{block:PostNotes}
